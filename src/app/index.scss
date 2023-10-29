@@ -1,0 +1,15 @@
+:root {
+  // Colors
+  --color-primary: #072659;
+  --color-secondary: #657A9D;
+  --color-primary-70: #072659B2;
+  --color-shadow: rgba(0, 0, 0, 0.25);
+  --color-white: #FFFFFF;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, serif;
+}

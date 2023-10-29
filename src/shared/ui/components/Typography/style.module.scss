@@ -1,0 +1,7 @@
+.root {
+  color: var(--color-primary);
+
+  &_secondary {
+    color: var(--color-secondary);
+  }
+}

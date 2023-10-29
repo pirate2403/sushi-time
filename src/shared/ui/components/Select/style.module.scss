@@ -1,0 +1,59 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .label {
+    color: var(--color-secondary);
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .wrapper {
+    position: relative;
+  }
+
+  .field {
+    width: 100%;
+    font-size: 18px;
+    padding: 4px 34px 4px 6px;
+    border-radius: 5px;
+    border: 1px solid var(--color-secondary);
+    color: var(--color-secondary);
+    outline-color: var(--color-primary);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    &::placeholder {
+      color: var(--color-secondary);
+    }
+  }
+
+  .option {
+    border-radius: 5px;
+    color: var(--color-primary);
+    font-size: 18px;
+    padding: 4px 6px;
+  }
+
+  .icon {
+    position: absolute;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    background: var(--color-primary);
+    right: 0;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+}
+

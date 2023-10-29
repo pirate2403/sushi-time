@@ -1,0 +1,340 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Тестовое API",
+    "description": "\n<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Техническое задание на разработку React приложения</title>\n</head>\n<body>\n    <header>\n        <h1>Техническое задание на разработку React приложения</h1>\n    </header>\n    <main>\n        <section>\n            <h2>Общие требования</h2>\n            <p>Разработать часть большого приложения на React. Архитектура приложения должна быть масштабируемой и учитывать возможность добавления новых компонентов и функций в будущем.</p>\n        </section>\n        <section>\n            <h2>Интерфейс</h2>\n            <a href=\"https://www.figma.com/file/LApMc0g3zFteEae5jBxOtj/testjob.sushi-time38.ru?type=design&node-id=0-1&mode=design&t=HhHyXX0z040tWqZt-0\">Ссылка на дизайн в Figma</a>\n            <img src=\"/image/\">\n            <p>Основной интерфейс состоит из:</p>\n            <ul>\n                <li>Блока со статическим контентом \"Название фирмы складской учёт\".</li>\n                <li>Dropdown \"Филиалы\", данные для которого загружаются по API.</li>\n                <li>Меню, содержащее элементы: компоненты, полуфабрикаты, товары, меню, перемещения, инвентаризация, выпуск товара, списание, накладные.</li>\n            </ul>\n        </section>\n        <section>\n            <h2>Таблица в разделе \"Меню\"</h2>\n            <p>Необходимо реализовать таблицу, содержимое которой зависит от выбранного филиала.</p>\n            <ul>\n                <li>Над таблицей должен быть расположен фильтр.</li>\n                <li>Три кнопки в таблице: диаграмма, карандаш и корзина. Эти кнопки должны присутствовать, но функционал их не требуется реализовывать.</li>\n                <li>Пагинация таблицы должна быть реализована и работоспособна.</li>\n            </ul>\n        </section>\n        <section>\n            <h2>Заглушки для других пунктов меню</h2>\n            <p>На другие пункты меню необходимо разместить заглушку в виде белого фона на месте расположения указанной таблицы.</p>\n        </section>\n        <section>\n            <h2>Интеграция с бэкендом</h2>\n            <h3>Общие требования</h3>\n            <p>Все запросы к API должны осуществляться согласно документации, доступной по адресу: <a href=\"https://testjob.checkport.ru/docs\">https://testjob.checkport.ru/docs</a>.</p>\n            <p>Обеспечить корректную обработку ошибок, которые могут возникнуть при обращении к API.</p>\n            <h3>Пагинация и фильтрация</h3>\n            <p>Если API поддерживает пагинацию или фильтрацию, реализовать соответствующие функции в приложении.</p>\n        </section>\n    </main>\n    <footer>\n        <section>\n            <h2>Разработка и стилизация</h2>\n            <ul>\n                <li>Приложение должно быть адаптивным и корректно отображаться на ПК, во всех браузерах (кроме IE6).</li>\n                <li>Приложение должно следовать общепринятым стандартам и лучшим практикам разработки.</li>\n            </ul>\n        </section>\n        <section>\n            <h2>Дополнительные заметки</h2>\n            <p>Данный проект является частью большого приложения. Поэтому важно обеспечить гибкость и масштабируемость решения для возможного дальнейшего расширения функционала.</p>\n        </section>\n        <section>\n            <h2>Приемка работ</h2>\n            <p>Проект должен быть снабжен инструкцией по запуску</p>\n            <p>После выполнения работ, проект необхожимо выложить на github или vercel и дать обратную связь по wa: +79025777625 или telegram @SergeyParfencev </p>\n        </section>\n    </footer>\n</body>\n</html>\n\n",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/filial/": {
+      "get": {
+        "summary": "Получить все филиалы",
+        "description": "Метод позволяет получить все филиалы",
+        "operationId": "get_filial_filial__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Filial"
+                  },
+                  "type": "array",
+                  "title": "Response Get Filial Filial  Get"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Сервис временно не доступен"
+          }
+        }
+      }
+    },
+    "/image/": {
+      "get": {
+        "summary": "Serve Image",
+        "operationId": "serve_image_image__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/filial/{filial_id}/menu/": {
+      "get": {
+        "summary": "Получить все меню",
+        "description": "Получение меню.\n\n- **limit**: Количество элементов на странице\n- **page**: На какой страницы мы находимся\n- **name**: Фильтрация по названию меню\n- **filial**: Фильтрация по названию филиала\n- **tt**: Фильтрация по названию торговой точки\n- **active**: Фильтрация по активности. **ВАЖНО что он принимает только active или no_active**",
+        "operationId": "get_menu_filial__filial_id__menu__get",
+        "parameters": [
+          {
+            "name": "filial_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Filial Id"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Name"
+            }
+          },
+          {
+            "name": "filial",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Filial"
+            }
+          },
+          {
+            "name": "tt",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Tt"
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Active"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatorMenu"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка данных",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Описание ошибки"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Данные не найдены",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Данные не найдены"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Сервис временно не доступен"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Filial": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "ИД",
+            "description": "..."
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 55,
+            "title": "Наименование",
+            "description": "..."
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "Filial"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Menu": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "ИД",
+            "description": "..."
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "Наименование",
+            "description": "..."
+          },
+          "filial": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Filial"
+              }
+            ],
+            "title": "Филиал"
+          },
+          "tt": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TT"
+              }
+            ],
+            "title": "Торговая точка"
+          },
+          "active": {
+            "type": "boolean",
+            "title": "Активность"
+          },
+          "export": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Экспорт"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "filial",
+          "tt",
+          "active",
+          "export"
+        ],
+        "title": "Menu"
+      },
+      "PaginatorMenu": {
+        "properties": {
+          "max_pages": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Количество страниц"
+          },
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/Menu"
+            },
+            "type": "array",
+            "title": "Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "max_pages",
+          "data"
+        ],
+        "title": "PaginatorMenu"
+      },
+      "TT": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "ИД",
+            "description": "..."
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 55,
+            "title": "Наименование",
+            "description": "..."
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "TT"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

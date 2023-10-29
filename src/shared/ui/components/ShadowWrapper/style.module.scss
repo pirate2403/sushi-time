@@ -1,0 +1,11 @@
+.root {
+  width: fit-content;
+
+  &_shadow {
+    box-shadow: 0 4px 4px 0 var(--color-shadow);
+  }
+
+  &_bordered {
+    border-radius: 5px
+  }
+}
