@@ -5,6 +5,8 @@
 > Стэк - React + TypeScript + Vite + Redux Toolkit
 >
 > Архитектурное решение - FSD (https://feature-sliced.design/ru/docs)
+>
+> Ссылка на развернутое приложение - https://653e6d84cf13577d2fef414b--brilliant-jelly-144cfc.netlify.app/
 
 ---
 
@@ -25,4 +27,6 @@
 > Поместите файл swagger.json в корневую директорию проекта
 
 > Выполнить команду `yarn run generate-api`
+
+
 
