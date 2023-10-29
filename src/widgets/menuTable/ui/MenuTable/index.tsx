@@ -75,12 +75,12 @@ export const MenuTable = memo(function () {
         {
             dataIndex: 'filial',
             key: 'filial',
-            title: <Input placeholder="Филиал" value={filialFilter} onChange={handleFilialChange} />,
+            title: <Input placeholder="Филиал" onChange={handleFilialChange} />,
         },
         {
             dataIndex: 'tt',
             key: 'tt',
-            title: <Input placeholder="Торговая точка" value={ttFilter} onChange={handleTtChange} />,
+            title: <Input placeholder="Торговая точка" onChange={handleTtChange} />,
         },
         {
             dataIndex: 'active',

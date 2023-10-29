@@ -1,4 +1,3 @@
-/* eslint-disable */
 /* tslint:disable */
 
 /*
@@ -24,12 +23,6 @@ export interface Filial {
      * @maxLength 55
      */
     name: string;
-}
-
-/** HTTPValidationError */
-export interface HTTPValidationError {
-    /** Detail */
-    detail?: ValidationError[];
 }
 
 /** Menu */
@@ -81,14 +74,4 @@ export interface TT {
      * @maxLength 55
      */
     name: string;
-}
-
-/** ValidationError */
-export interface ValidationError {
-    /** Location */
-    loc: (string | number)[];
-    /** Message */
-    msg: string;
-    /** Error Type */
-    type: string;
 }
