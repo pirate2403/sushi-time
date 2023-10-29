@@ -6,7 +6,7 @@
 >
 > Архитектурное решение - FSD (https://feature-sliced.design/ru/docs)
 >
-> Ссылка на развернутое приложение - https://653e6d84cf13577d2fef414b--brilliant-jelly-144cfc.netlify.app/
+> Ссылка на развернутое приложение - https://653e6fac779d1a0306281bfd--brilliant-jelly-144cfc.netlify.app
 
 ---
 
